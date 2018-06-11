@@ -9,4 +9,3 @@
     groups: 
       - wheel
     state: present
- home: /home/{{ sname }}
