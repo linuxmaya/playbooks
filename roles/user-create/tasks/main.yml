@@ -8,4 +8,4 @@
     group: wheel
     groups: 
       - wheel
-    state: present
+    state: absent
