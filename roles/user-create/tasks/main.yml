@@ -6,5 +6,7 @@
     comment: "{{ sfull }}"
     shell: /bin/bash
     group: wheel
-    groups: wheel
-home: /home/"{{ sname }}"
+    groups: 
+      - wheel
+    state: present
+ home: /home/{{ sname }}
