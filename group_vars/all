@@ -2,3 +2,5 @@
 sname: jdelgado
 sfull: "Jesus Delgado WebWas"
 file1: "/tmp/text1.txt"
+client1: "192.168.1.21"
+client2: "192.168.1.22"
