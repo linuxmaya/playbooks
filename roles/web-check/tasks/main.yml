@@ -8,7 +8,7 @@
         http_headers:
           Host: client1.localdomain
 
-    - name: verify that client1.localdomain is up
+    - name: verify that client2.localdomain is up
       uri:
         url: http://{{ client2 }}/
         status_code: 200
