@@ -1,8 +1,8 @@
 ---
-- name: ensure services are up before doing anything
+- name: Security updates only
   hosts: all
   any_errors_fatal: true
   serial: 1 
   become: true 
   roles:
-- web-check
+  - security_updates
