@@ -1,0 +1,8 @@
+---
+- name: ensure services are up before doing anything
+  hosts: all
+  any_errors_fatal: true
+  serial: 1 
+  become: true 
+  roles:
+- web-check
