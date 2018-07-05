@@ -1,0 +1,5 @@
+- name: Security updates only
+  command: yum -y --security update
+  when: security_updates is defined
+  tags:
+    - security_updates
