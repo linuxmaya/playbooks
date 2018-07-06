@@ -3,5 +3,5 @@
   command: yum -y --security update
   when: security-updates is defined
   tags:
-    - security_updates
+    - security-updates
   register: securityout
