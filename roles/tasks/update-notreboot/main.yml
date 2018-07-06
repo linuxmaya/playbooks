@@ -1,0 +1,9 @@
+---
+- name: Complete Update
+  yum:
+    update_cache: yes
+    name: '*'
+    state: latest
+  tags:
+    - update-all
+  register: update-all-out
