@@ -1,7 +1,6 @@
 ---
 - name: Security updates only
   command: yum -y --security update
-  when: security-updates is defined
   tags:
     - security-updates
   register: securityout
