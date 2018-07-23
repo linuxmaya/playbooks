@@ -1,5 +1,5 @@
 ---
-- name: Reboot requered
+- name: Reboot required
   hosts: all
   any_errors_fatal: true
   serial: 1 
