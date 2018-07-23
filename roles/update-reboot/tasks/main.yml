@@ -13,18 +13,18 @@
   register: reboot_started
   ignore_errors: true
   
-- name: pause for 75 secs
+- name: pause for 30 secs
   pause:
-    seconds: 75
+    seconds: 30
   when: reboot_required.stdout == "reboot_needed"
     
-- name: Wait for ssh
-  wait_for:
-        host: "{{ inventory_hostname }}"
-        port: 22
-        timeout: 60
-        search_regex: OpenSSH
-        delegate_to: localhost
-        become: false
-        state: started
-  when: reboot_started is changed
+#- name: Wait for ssh
+#  wait_for:
+ #       host: "{{ inventory_hostname }}"
+ #       port: 22
+ #       timeout: 60
+ #       search_regex: OpenSSH
+ #       delegate_to: localhost
+ #       become: false
+ #       state: started
+ # when: reboot_started is changed
