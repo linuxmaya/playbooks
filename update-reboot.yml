@@ -1,0 +1,8 @@
+---
+- name: Reboot requered
+  hosts: all
+  any_errors_fatal: true
+  serial: 1 
+  become: true 
+  roles:
+- update-reboot
