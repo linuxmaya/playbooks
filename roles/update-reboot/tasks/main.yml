@@ -7,17 +7,24 @@
      
 - name: restart system 
   command: /sbin/shutdown -r +1 "Rebooting System After Patching"
-  async: 30
+  async: 0
   poll: 0
   when: reboot_required.stdout == "reboot_needed"
   register: reboot_started
   ignore_errors: true
-  notify:
-    - waiting for server to come back after reboot
 
-- name: wait for ssh again available.
-  wait_for_connection:
-    connect_timeout: 20
-    sleep: 5
-    delay: 5
-    timeout: 60
+# this task is to wait for 3 minutues for system to come up after the reboot
+– name: pause for 60 secs
+  pause:
+  minutes: 1
+
+# this task is to confirm,system is up and responding to ssh
+– name: check if system responding to ssh
+  local_action:
+  module: wait_for
+  host={{ inventory_hostname }}
+  port=22
+  delay=15
+  timeout=60
+  state=started
+  when: reboot_started|changed
