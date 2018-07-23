@@ -15,7 +15,7 @@
   
 - name: pause for 120 secs
   pause:
-  minutes: 2
+    minutes: 2
 
 - name: wait for host boot
   local_action:
