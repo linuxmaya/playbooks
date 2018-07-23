@@ -1,14 +1,14 @@
 ---
-- name: Reboot required (CentOS or Red Hat) - Step 1
+- name: Reboot required   
   command: /usr/bin/needs-restarting -r
   register: reboot_required
-  ignore_errors: True
-
-- name: restart system (CentOS or Red Hat) - Step 2
-  command: shutdown -r +1 “Rebooting System After Patching”
-  async: 0
+  ignore_errors: true
+  
+- name: restart system 
+  command: shutdown -r +1 "Rebooting System After Patching"
+  async: 30
   poll: 0
-  when: reboot_required.stdout == “reboot_needed”
+  when: reboot_required.stdout == "reboot_needed"
   register: reboot_started
   ignore_errors: true
   notify:
