@@ -13,16 +13,17 @@
   register: reboot_started
   ignore_errors: true
   
-- name: pause for 90 secs
+- name: pause for 75 secs
   pause:
-    seconds: 90
+    seconds: 75
     
-- name: wait for host boot
-  local_action:
-    module: wait_for
-    host: "{{ inventory_hostname }}"
-    port: 22
-    delay: 15
-    timeout: 60
-    state: started
+- name: Wait for ssh
+  wait_for:
+        host: "{{ inventory_hostname }}"
+        port: 22
+        timeout: 60
+        search_regex: OpenSSH
+      delegate_to: localhost
+      become: false
+      state: started
   when: reboot_started is changed
