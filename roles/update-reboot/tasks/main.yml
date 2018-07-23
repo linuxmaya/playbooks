@@ -15,15 +15,14 @@
   
 - name: pause for 60 secs
   pause:
-    minutes: 1
-
+    minutes: 2
+    
 - name: wait for host boot
-  sudo: yes
   local_action:
     module: wait_for
     host: "{{ inventory_hostname }}"
     port: 22
-    delay: "{{ boot_wait | default(15) }}"
+    delay: 15
     timeout: 60
     state: started
-  when: reboot_started.changed
+  when: reboot_started|changed
