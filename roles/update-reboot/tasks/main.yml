@@ -6,18 +6,19 @@
   register: reboot_required
      
 - name: restart system 
-  command: /sbin/shutdown -r +1"Rebooting System After Patching"
+  command: /sbin/shutdown -r +1 "Rebooting System After Patching"
   async: 0
   poll: 0
   when: reboot_required.stdout == "reboot_needed"
   register: reboot_started
   ignore_errors: true
   
-- name: pause for 120 secs
+- name: pause for 60 secs
   pause:
-    minutes: 2
+    minutes: 1
 
 - name: wait for host boot
+  sudo: yes
   local_action:
     module: wait_for
     host: "{{ inventory_hostname }}"
