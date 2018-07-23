@@ -16,6 +16,7 @@
 - name: pause for 75 secs
   pause:
     seconds: 75
+  when: reboot_required.stdout == "reboot_needed"
     
 - name: Wait for ssh
   wait_for:
