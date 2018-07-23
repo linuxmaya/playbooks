@@ -13,9 +13,9 @@
   register: reboot_started
   ignore_errors: true
   
-- name: pause for 60 secs
+- name: pause for 90 secs
   pause:
-    minutes: 2
+    seconds: 90
     
 - name: wait for host boot
   local_action:
@@ -25,4 +25,4 @@
     delay: 15
     timeout: 60
     state: started
-  when: reboot_started|changed
+  when: reboot_started is changed
