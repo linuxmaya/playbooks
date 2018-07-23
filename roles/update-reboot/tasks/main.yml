@@ -16,14 +16,9 @@
 - name: wait for host boot
     local_action:
       module: wait_for
-      host: "{{ ansible_ssh_host }}"
+      host: "{{ inventory_hostname }}"
       port: 22
       delay: "{{ boot_wait | default(60) }}"
       timeout: 60
       state: started
-  when: reboot_started.changed
-
-#- name: check if system responding to ssh
-# local_action:
-# module: wait_for host={{ inventory_hostname }} port=22 delay=15 timeout=60 state=started
-#when: reboot_started|changed
+    when: reboot_started.changed
