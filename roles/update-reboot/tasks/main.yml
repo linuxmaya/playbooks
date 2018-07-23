@@ -4,7 +4,7 @@
   register: reboot_required
   ignore_errors: True
 
-– name: restart system (CentOS or Red Hat) - Step 2
+- name: restart system (CentOS or Red Hat) - Step 2
   command: shutdown -r +1 “Rebooting System After Patching”
   async: 0
   poll: 0
