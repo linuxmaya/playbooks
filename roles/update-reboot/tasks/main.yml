@@ -6,7 +6,7 @@
   register: reboot_required
      
 - name: restart system 
-  command: /sbin/shutdown -r +1 "Rebooting System After Patching"
+  command: /sbin/shutdown -r "Rebooting System After Patching"
   async: 0
   poll: 0
   when: reboot_required.stdout == "reboot_needed"
